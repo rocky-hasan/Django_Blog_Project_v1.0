@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Create Your Post{% endblock title %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Add Post Your Blog....</h1><br/><br/>
+    <div class="form-group">
+        <form action="" method='Post' enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button type='submit' class="btn btn-secondary" >Post</button>
+        </form>
+    </div>
+    {% else %}
+    You should login or Signup
+{% endif %}
+    <script>
+        var name={{user.id}};
+        document.getElementById("elder").value=name
+    </script>
+{% endblock content %}
